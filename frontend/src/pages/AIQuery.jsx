@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import api from "../api/api";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
@@ -52,6 +52,7 @@ export default function AIQuery() {
   const [refreshKey, setRefreshKey] = useState(0);
   const [listening, setListening] = useState(false);
   const [audioUrl, setAudioUrl] = useState("");
+  const messagesEndRef = useRef(null);
 
   const speechSupported = useMemo(
     () => Boolean(window.SpeechRecognition || window.webkitSpeechRecognition),
@@ -115,6 +116,10 @@ export default function AIQuery() {
       if (audioUrl) URL.revokeObjectURL(audioUrl);
     };
   }, [audioUrl]);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [messages]);
 
   async function handleSend(customPrompt) {
     const question = (customPrompt ?? prompt).trim();
@@ -182,7 +187,7 @@ export default function AIQuery() {
         <Navbar title="AI Query" />
 
         <div className="flex min-h-0 flex-1 overflow-hidden">
-          <section className="flex min-w-0 flex-1 flex-col overflow-y-auto border-r border-slate-200 p-6">
+          <section className="flex min-w-0 flex-1 flex-col overflow-hidden border-r border-slate-200 p-6">
             {error ? (
               <div className="mb-4 rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
                 {error}
@@ -225,6 +230,7 @@ export default function AIQuery() {
                   {message.content}
                 </div>
               ))}
+              <div ref={messagesEndRef} />
             </div>
 
             {audioUrl ? <audio className="mt-3 w-full" controls src={audioUrl} /> : null}
