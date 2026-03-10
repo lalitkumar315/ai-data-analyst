@@ -187,7 +187,7 @@ export default function AIQuery() {
         <Navbar title="AI Query" />
 
         <div className="flex min-h-0 flex-1 overflow-hidden">
-          <section className="flex min-w-0 flex-1 flex-col overflow-hidden border-r border-slate-200 p-6">
+          <section className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden border-r border-slate-200 p-6">
             {error ? (
               <div className="mb-4 rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
                 {error}
@@ -196,9 +196,11 @@ export default function AIQuery() {
 
             <article className="mb-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
               <h3 className="mb-2 text-sm font-bold">AI Dataset Summary</h3>
-              {summaryLoading ? <p className="text-sm text-slate-500">Loading summary...</p> : null}
-              {summaryError ? <p className="text-sm text-rose-600">{summaryError}</p> : null}
-              {!summaryLoading && !summaryError ? <MarkdownView content={summaryText} /> : null}
+              <div className="max-h-56 overflow-y-auto">
+                {summaryLoading ? <p className="text-sm text-slate-500">Loading summary...</p> : null}
+                {summaryError ? <p className="text-sm text-rose-600">{summaryError}</p> : null}
+                {!summaryLoading && !summaryError ? <MarkdownView content={summaryText} /> : null}
+              </div>
             </article>
 
             <article className="mb-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -217,7 +219,7 @@ export default function AIQuery() {
               </div>
             </article>
 
-            <div className="flex-1 space-y-4 overflow-y-auto">
+            <div className="min-h-0 flex-1 space-y-4 overflow-y-auto">
               {messages.map((message, index) => (
                 <div
                   key={`${message.role}-${index}`}
