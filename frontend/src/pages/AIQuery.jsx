@@ -181,8 +181,8 @@ export default function AIQuery() {
       <main className="flex min-w-0 flex-1 flex-col overflow-hidden">
         <Navbar title="AI Query" />
 
-        <div className="flex min-h-0 flex-1">
-          <section className="flex min-w-0 flex-1 flex-col border-r border-slate-200 p-6">
+        <div className="flex min-h-0 flex-1 overflow-hidden">
+          <section className="flex min-w-0 flex-1 flex-col overflow-y-auto border-r border-slate-200 p-6">
             {error ? (
               <div className="mb-4 rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
                 {error}
