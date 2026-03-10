@@ -40,9 +40,9 @@ export default function DataExplorer() {
   }, [rows]);
 
   return (
-    <div className="flex min-h-screen bg-background-light">
+    <div className="flex h-screen overflow-hidden bg-background-light">
       <Sidebar />
-      <main className="min-w-0 flex-1">
+      <main className="min-w-0 flex-1 overflow-y-auto">
         <Navbar title="Data Explorer" />
 
         <div className="space-y-6 p-8">

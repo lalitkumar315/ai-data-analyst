@@ -161,9 +161,9 @@ export default function Analytics() {
   const yAxisOptions = numericCols.filter((item) => item !== xCol);
 
   return (
-    <div className="flex min-h-screen bg-background-light">
+    <div className="flex h-screen overflow-hidden bg-background-light">
       <Sidebar />
-      <main className="min-w-0 flex-1">
+      <main className="min-w-0 flex-1 overflow-y-auto">
         <Navbar title="Analytics - Dataset & Graph Analysis" />
 
         <div className="space-y-6 p-8">

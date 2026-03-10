@@ -69,9 +69,9 @@ export default function Dashboard() {
   const heatmapFeatures = Object.keys(heatmapRows);
 
   return (
-    <div className="flex min-h-screen bg-background-light">
+    <div className="flex h-screen overflow-hidden bg-background-light">
       <Sidebar />
-      <main className="flex min-w-0 flex-1 flex-col">
+      <main className="flex min-w-0 flex-1 flex-col overflow-y-auto">
         <Navbar title="Dashboard - EDA" />
 
         <div className="space-y-6 p-8">

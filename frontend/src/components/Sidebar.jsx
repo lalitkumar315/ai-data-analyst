@@ -68,7 +68,7 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="w-72 shrink-0 border-r border-slate-200 bg-white">
+    <aside className="sticky top-0 flex h-screen w-72 shrink-0 flex-col overflow-y-auto border-r border-slate-200 bg-white">
       <div className="p-6">
         <div className="mb-8 flex items-center gap-3 text-primary">
           <span className="material-symbols-outlined text-3xl">query_stats</span>

@@ -176,9 +176,9 @@ export default function AIQuery() {
   }
 
   return (
-    <div className="flex min-h-screen bg-background-light">
+    <div className="flex h-screen overflow-hidden bg-background-light">
       <Sidebar />
-      <main className="flex min-w-0 flex-1 flex-col">
+      <main className="flex min-w-0 flex-1 flex-col overflow-hidden">
         <Navbar title="AI Query" />
 
         <div className="flex min-h-0 flex-1">
