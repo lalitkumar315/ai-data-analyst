@@ -9,6 +9,24 @@ const links = [
   { to: "/ai-query", label: "AI Query", icon: "chat_bubble" },
 ];
 
+const supportLinks = [
+  {
+    href: "https://github.com/lalitkumar315/ai-data-analyst",
+    label: "GitHub Repo",
+    icon: "code",
+  },
+  {
+    href: "https://www.linkedin.com/in/lalit-kumar-mahanta/",
+    label: "Contact Developer",
+    icon: "support_agent",
+  },
+  {
+    href: "mailto:lalit.kumar.31524@gmail.com",
+    label: "Email Support",
+    icon: "mail",
+  },
+];
+
 export default function Sidebar() {
   const [datasets, setDatasets] = useState([]);
   const [selectedDataset, setSelectedDataset] = useState("");
@@ -129,12 +147,25 @@ export default function Sidebar() {
           Upload Dataset
         </button>
 
-        {status ? <p className="mb-2 text-xs text-slate-600">{status}</p> : null}
+        {status ? <p className="mb-3 text-xs text-slate-600">{status}</p> : null}
 
-        <button className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-slate-600 hover:bg-slate-100">
-          <span className="material-symbols-outlined">help</span>
-          Support
-        </button>
+        <div className="rounded-lg border border-slate-200 p-3">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Support</p>
+          <div className="space-y-1">
+            {supportLinks.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-600 hover:bg-slate-100"
+              >
+                <span className="material-symbols-outlined">{item.icon}</span>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </aside>
   );
